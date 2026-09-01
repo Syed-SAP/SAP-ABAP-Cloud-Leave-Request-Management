@@ -1,0 +1,20 @@
+@EndUserText.label : 'Draft table for entity ZC_LEAVE_REQ'
+@AbapCatalog.enhancement.category : #EXTENSIBLE_ANY
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+
+define table zemp_leave_req_d {
+
+  key mandt           : mandt not null;
+  key leave_request_id : abap.char(20) not null;
+  employee_id         : abap.char(20);
+  leave_type          : abap.char(20);
+  start_date          : abap.dats;
+  end_date            : abap.dats;
+  reason              : abap.char(255);
+  status              : abap.char(20);
+  last_changed_at     : abp_lastchange_tstmpl;
+  "%admin"            : include sych_bdl_draft_admin_inc;
+
+}
