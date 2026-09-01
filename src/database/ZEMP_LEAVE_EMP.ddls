@@ -1,0 +1,15 @@
+@EndUserText.label : 'Employee Master'
+@AbapCatalog.enhancement.category : #NOT_EXTENSIBLE
+@AbapCatalog.tableCategory : #TRANSPARENT
+@AbapCatalog.deliveryClass : #A
+@AbapCatalog.dataMaintenance : #RESTRICTED
+
+define table zemp_leave_emp {
+
+  key employee_id : abap.char(10) not null;
+  employee_name   : abap.char(120) not null;
+  email           : abap.char(120) not null;
+  manager_id      : abap.char(10);
+  department      : abap.char(50);
+
+}
