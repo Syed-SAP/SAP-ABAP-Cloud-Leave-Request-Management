@@ -1,0 +1,37 @@
+managed implementation in class zbp_c_leave_req unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZC_LEAVE_REQ alias LeaveRequest
+persistent table zemp_leave_req
+draft table zemp_leave_req_d
+lock master
+total etag last_changed_at
+authorization master ( instance, global )
+early numbering
+{
+  create;
+  update;
+  delete;
+
+  field ( readonly ) leave_request_id;
+  field ( readonly ) last_changed_at;
+  field ( readonly ) status;
+
+  determination set_initial_status on modify { create; }
+
+  validation validate_leave_request on save
+  {
+    create;
+    update;
+  }
+
+  action Approve result [1] $self;
+  action Reject result [1] $self;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+}
